@@ -35,6 +35,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./downloads.mp4
-          asset_name: downloads.mp4
+          asset_path: ./downloads.tar.gz
+          asset_name: downloads.tar.gz
           asset_content_type: application/gzip
+      - name: Delete workflow runs
+      uses: ActionsRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1 
